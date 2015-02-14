@@ -1,6 +1,6 @@
 {
   "name": "mongoose-autoinc",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Mongoose plugin that auto-increments any ID field on your schema forked from mongoose-auto-increment",
   "homepage": "https://github.com/zj8487/mongoose-autoinc",
   "author": "zj8487 <zj8487@gmail.com> (https://github.com/zj8487)",

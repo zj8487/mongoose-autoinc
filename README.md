@@ -2,6 +2,7 @@
 
 > Mongoose plugin that auto-increments any ID field on your schema forked from mongoose-auto-increment
 
+> Note: The module will change the api friquenctly before 0.1.0 version
 
 ## Getting Started
 
@@ -19,7 +20,7 @@ var mongoose = require('mongoose'),
 
 var connection = mongoose.createConnection("mongodb://localhost/myDatabase");
 
-autoIncrement.initialize(connection);
+autoIncrement.initialize(connection, mongoose);
 
 var bookSchema = new Schema({
     author: { type: Schema.Types.ObjectId, ref: 'Author' },
@@ -68,30 +69,6 @@ bookSchema.plugin(autoIncrement.plugin, {
 ````
 
 Your first book document would have a `bookId` equal to `100`. Your second book document would have a `bookId` equal to `200`, and so on.
-
-### Want to know the next number coming up?
-
-````js
-var Book = connection.model('Book', bookSchema);
-Book.nextCount(function(err, count) {
-
-    // count === 0 -> true
-
-    var book = new Book();
-    book.save(function(err) {
-
-        // book._id === 0 -> true
-
-        book.nextCount(function(err, count) {
-
-            // count === 1 -> true
-
-        });
-    });
-});
-````
-
-nextCount is both a static method on the model (`Book.nextCount(...)`) and an instance method on the document (`book.nextCount(...)`).
 
 ### Want to reset counter back to the start value?
 
